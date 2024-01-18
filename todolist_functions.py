@@ -28,7 +28,7 @@ def Todos(user_id, collection1, collection2):
     print("ToDo List 중 하나 선택 하세요 !")
 
     # todos_list 컬렉션의 내용 중 'title'만 print
-    result_todo = user_id.find({})           # hint
+    result_todo = collection1.find({})           # hint
     count = 1
     for i in result_todo:
         print("{}.{}".format(count, i["title"]), end=" ")           # hint
@@ -36,9 +36,9 @@ def Todos(user_id, collection1, collection2):
     print("")
 
     # todo중 하나 입력
-    user_input = input("Title 번호: ")-1           # hint
+    user_input = int(input("Title 번호: "))-1           # hint
     # Status 입력
-    user_status = int(input("Status: "))           # hint
+    user_status = input("Status: ")           # hint
 
     # 사용자가 입력한 번호에 해당하는 title과 그 title id를 찾음
     result_todo_title = collection1.find().skip(user_input).limit(1)
@@ -50,7 +50,7 @@ def Todos(user_id, collection1, collection2):
     collection2.insert_one({"user_id" : user_id, "user_todo_id" : inserted_todo_id, "todo_title" : inserted_todo, "user_status" : user_status})
 
 # 종료 여부 입력 function
-def End(user_id, collection1, collection2):           # hint
+def End(collection3, collection1, collection2):           # hint
     user_end = 'x'           # hint
     while True:
         # c 입력 시 Todos() 다시 실행
@@ -61,7 +61,7 @@ def End(user_id, collection1, collection2):           # hint
         elif user_end == "q":
             print("")
             print("------------------------")
-            user_id = User_name(collection)
+            user_id = User_name(collection3)
             Todos(user_id, collection1, collection2)
         # x 입력 시 프로그램 종료
         else:
