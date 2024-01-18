@@ -50,7 +50,7 @@ def Todos(user_id, collection1, collection2):
     collection2.insert_one({"user_id" : user_id, "user_todo_id" : inserted_todo_id, "todo_title" : inserted_todo, "user_status" : user_status})
 
 # 종료 여부 입력 function
-def End(collection3, collection1, collection2):           # hint
+def End(collection, collection1, collection2):           # hint
     user_end = 'x'           # hint
     while True:
         # c 입력 시 Todos() 다시 실행
@@ -61,7 +61,7 @@ def End(collection3, collection1, collection2):           # hint
         elif user_end == "q":
             print("")
             print("------------------------")
-            user_id = User_name(collection3)
+            user_id = User_name(collection)
             Todos(user_id, collection1, collection2)
         # x 입력 시 프로그램 종료
         else:
