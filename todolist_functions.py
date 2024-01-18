@@ -51,7 +51,7 @@ def Todos(user_id, collection1, collection2):
 
 # 종료 여부 입력 function
 def End(collection, collection1, collection2):           # hint
-    user_end = 'x'           # hint
+    user_end = 'q'           # hint
     while True:
         # c 입력 시 Todos() 다시 실행
         if user_end == "c":
